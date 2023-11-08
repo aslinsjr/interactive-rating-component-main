@@ -1,25 +1,28 @@
-const container = document.querySelector(".container")
-const submitButton = document.querySelector("#submit-btn")
+const container = document.querySelector(".container");
+const submitButton = document.querySelector("#submit-btn");
 
-const buttons = document.querySelectorAll("#rating-container li")
-const selectedNumber = document.querySelector("#selected-number")
+const buttons = document.querySelectorAll("#rating-container li");
+const selectedNumber = document.querySelector("#selected-number");
 
-submitButton.addEventListener("click", () => {
-    container.classList.add("active")
-})
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-        console.log(e)
-
+    
         const button = e.target
 
-        button.classList.add("selected")
+        button.classList.add("selected");
 
-        const id = button.getAttribute("id")
-
-        console.log(id)
+        const id = button.getAttribute("id");
 
         selectedNumber.innerHTML = id
-    })
-})
+        
+        submitButton.addEventListener("click", () => {
+
+            container.classList.add("active");
+            if (!id) container.classList.remove("active");
+        });
+    });
+});
+
+
+
